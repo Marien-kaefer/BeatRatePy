@@ -24,7 +24,7 @@ We recommend using conda as it is relatively straightforward and makes the manag
 Once conda is installed, open Anaconda Prompt and run the following series of commands:
 
 ```
-conda create --name jupyter-napari-env python=3.11 -y
+conda create --name jupyter-napari-env python=3.11 
 conda activate jupyter-napari-env
 conda install -c conda-forge napari pyqt -y
 pip install jupyterlab matplotlib ipywidgets 
@@ -40,7 +40,7 @@ To start the notebook, open Anaconda prompt and activate your environment, if no
 
 ```
 conda activate jupyter-napari-env
-jupyter notebook
+jupyter lab
 ```
 
 A browser window will open within which you can navigate to the location of your notebook. Please note that a single click opens folders amd files. 
