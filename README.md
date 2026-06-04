@@ -27,7 +27,7 @@ Once conda is installed, open Anaconda Prompt and run the following series of co
 conda create --name jupyter-napari-env python=3.11 
 conda activate jupyter-napari-env
 conda install -c conda-forge napari pyqt -y
-pip install jupyterlab matplotlib ipywidgets 
+pip install jupyterlab matplotlib ipywidgets bioio bioio-czi bioio-ome-tiff bioio-tifffile bioio-bioformats
 ```
 
 You have successfully set up the necessary conda environment! You do not need to repeat these step unless you require a new environment or you are setting this up on another system. 
