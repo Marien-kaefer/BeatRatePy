@@ -26,7 +26,7 @@ Once conda is installed, open Anaconda Prompt and run the following series of co
 ```
 conda create --name jupyter-napari-env python=3.11 
 conda activate jupyter-napari-env
-conda install -c conda-forge napari pyqt -y
+conda install -c conda-forge napari pyqt6 -y
 pip install jupyterlab matplotlib ipywidgets bioio bioio-czi bioio-ome-tiff bioio-tifffile bioio-bioformats
 ```
 
