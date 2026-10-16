@@ -22,11 +22,20 @@ We recommend using conda as it is relatively straightforward and makes the manag
 
 ## Step 3: Set Up Environment
 Once conda is installed, open Anaconda Prompt and run the following series of commands:
-
+1. Create a new conda environment to host the notebook
 ```
 conda create --name jupyter-napari-env python=3.11 
+```
+2. Activate the environment that was just created. 
+```
 conda activate jupyter-napari-env
+```
+3. Install napari. Check [here](https://napari.org/stable/getting_started/installation.html) fir the most up to date napari installation instructions. 
+```
 conda install -c conda-forge napari pyqt6 -y
+```
+4. Install the required packages within the same environment that are required to run the notebook. 
+```
 pip install jupyterlab matplotlib ipywidgets bioio bioio-czi bioio-ome-tiff bioio-tifffile bioio-bioformats
 ```
 
