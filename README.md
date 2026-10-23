@@ -1,4 +1,4 @@
-# Cardiac Waveform Analysis of Transmitted Light Time Series Images
+# BeatRatePy - Automated Hight-Throughput Python-Based Beat Rate Quantification and Generation of Speed and Contraction Traces
 
 ## Overview
 
