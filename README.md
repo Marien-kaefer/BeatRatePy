@@ -2,8 +2,8 @@
 
 ## Overview
 
-This repository contains the Matlab/Python code associated with the following publication:
-	* **INSERT INFO**
+This repository contains the Matlab/Python code associated with the following preprint
+	 **https://www.biorxiv.org/content/10.64898/2026.10.21.760713v1**
 
 ## Getting started
 
