@@ -1,14 +1,14 @@
-# Cardiac Waveform Analysis of Transmitted Light Time Series Images
+# BeatRatePy - Automated Hight-Throughput Python-Based Beat Rate Quantification and Generation of Speed and Contraction Traces
 
 ## Overview
 
-This repository contains the Matlab/Python code associated with the following publication:
+This repository contains the Python code associated with the following publication:
 
-* **INSERT INFO**
+* **https://www.biorxiv.org/content/10.64898/2026.10.21.760713v1** 
 
-The Python notebook (`Jupyter_notebook` folder) analyses time-lapse microscopy images of beating cardiac tissue. It extracts quantitative measures of contractile motion, namely **contraction amplitude** and **contraction speed**, as traces over time, estimates the **beat rate**, and saves the results as numerical data files, plots and image stacks. It supports analysing a single file or a whole folder of files (batch mode). The Matlab version is in the folder `Matlab`. Further details are in `BeatRatePy_Documentation.pdf`.
+The Python notebook (`Jupyter_notebook` folder) analyses time-lapse microscopy images of beating cardiac tissue. It extracts quantitative measures of contractile motion, namely **contraction amplitude** and **contraction speed**, as traces over time, estimates the **beat rate**, and saves the results as numerical data files, plots and pixel variance image stacks. It supports analysing a single file or a whole folder of files (batch mode). The originak Matlab version of the code is located in the folder `Matlab` for reference only. Further details are in `Docs/BeatRatePy_Documentation.pdf`.
 
-You can modify the Matlab code and/or the Jupyter notebook to run on your own data. To do this you will need to produce some data to analyse, or use the exemplary data published here: **[insert DOI & link]**.
+You can modify the Jupyter notebook to run on your own data. To do this you will need to produce some data to analyse, or use the exemplary data published in BioImage Archive: **[10.6019/S-BIAD4119](https://www.ebi.ac.uk/biostudies/bioimages/studies/S-BIAD4119)**.
 
 ## Contents
 
@@ -37,19 +37,19 @@ You can modify the Matlab code and/or the Jupyter notebook to run on your own da
 
 ## Quick start (summary)
 
-If you have done this before, this is the short version. Detailed instructions for beginners follow below.
+If you have done this before, this is the short version. Detailed instructions follow below.
 
 1. Download the repository and unzip it.
 2. Install Miniconda (or Anaconda) once.
 3. Create the environment once (Step 3).
-4. Every time you want to analyse data: open the Anaconda Prompt, run `conda activate jupyter-napari-env`, go to the repository folder with `cd`, run `jupyter lab`, and open the notebook in the `Jupyter_notebook` folder.
-5. Run **Cell 1**, fill in the parameter form (at least the input folder, file name and video rate) and click **Submit parameters**. Then run **Cell 2**.
+4. Every time you want to analyse data: open the Anaconda Prompt, run `conda activate jupyter-napari-env`, go to the repository-containing folder with `cd`, run `jupyter lab`, and open the notebook in the `Jupyter_notebook` folder.
+5. Run **Code Cell 1**, fill in the parameter form (at least the input folder, file name and video rate) and click **Submit parameters**. Then run **Code Cell 2**.
 6. Find the results in the `analysis` subfolder inside your input folder.
 7. When finished: save, shut down the notebook, press `Ctrl+C` in the prompt, run `conda deactivate`.
 
 ## New to Jupyter notebooks? Key concepts
 
-You do not need any programming experience to run an existing notebook, but a few ideas make everything easier.
+You do not need any programming experience to run an existing notebook, but the information below might make getting started easier.
 
 **What is a Jupyter notebook?** A notebook (file ending in `.ipynb`) is a document that mixes explanatory text, code and results (plots, tables, images) in one place. It is opened in your web browser, but it runs entirely on your own computer. No data is uploaded anywhere.
 
@@ -103,7 +103,7 @@ We recommend **conda**, because it is relatively straightforward and makes it si
 
 Use the default installation options. After installation, you should find **Anaconda Prompt** in the Windows Start menu. On macOS and Linux, use the normal **Terminal** application wherever the instructions below mention the Anaconda Prompt.
 
-**What is the Anaconda Prompt?** It is a text window in which you type commands and confirm them with `Enter`. It looks unfamiliar at first, but you only need to copy and paste the commands given here. To paste in the Windows prompt, right-click or press `Ctrl+V`.
+**What is the Anaconda Prompt?** It is a text window in which you type commands and confirm them with `Enter`. It might look unfamiliar at first, but you only need to copy and paste the commands given here. To paste in the Windows prompt, right-click or press `Ctrl+V`.
 
 **What is an environment?** An environment is a separate, self-contained set of Python packages. Creating one for this notebook means that the packages needed here do not interfere with anything else installed on your computer.
 
@@ -192,15 +192,16 @@ A browser window (or tab) opens with the JupyterLab interface. Leave the prompt 
 
 **Your image data.** One or more time-lapse recordings of beating cardiac tissue:
 
-- Supported formats: `.czi` (Zeiss), `.ome.tiff`, `.tif` and `.tiff`. Other formats that Bio-Formats can open may work but have not been tested.
+- Supported formats: `.czi` (Zeiss), `.ome.tiff`, `.tif` and `.tiff`. Other formats that Bio-Formats can open may work but have not been tested and are currently not filtered for.
 - Each recording must be **one file containing many frames** (a time series). A file with only one frame cannot be analysed.
 - Images must be grayscale (single channel), or the channel to analyse must be the **first channel** in the file. If a file has several channels, only the first is used.
-- Place all files for an analysis in **one folder**. Sub-folders are not scanned.
+- Place all files for an analysis in **one folder**. Sub-folders are not scanned. 
+- Files to be processed in batch must have been redcorded with the same frame rate and - if using calibration. 
 
 **Two numbers that you must know for your recording:**
 
 - The **frame rate** (frames per second) at which the time-lapse was recorded. Check your acquisition settings or the image metadata.
-- The **pixel size** (µm per pixel), if you want results in physical units rather than pixels.
+- Optional: The **pixel size** (µm per pixel), if you want results in physical units rather than pixels.
 
 > The form in the notebook is pre-filled with placeholder values (video rate 1 fps and pixel size 1 µm/px). If you do not change them, the time axis and the units of your results will be wrong.
 
@@ -215,10 +216,10 @@ A browser window (or tab) opens with the JupyterLab interface. Leave the prompt 
 
 ### Running an analysis, step by step
 
-The notebook has just **two code cells**. Cell 1 is a parameter form, and Cell 2 is the analysis.
+The notebook has **two code cells** only. Cell 1 is a parameter form, and Cell 2 is the analysis.
 
 1. In the file browser, open the folder `Jupyter_notebook` and open the notebook file (ending in `.ipynb`).
-2. **Run Cell 1.** Click on the first code cell and press `Shift + Enter`. A graphical form appears below the cell, with tick boxes, text fields and number fields.
+2. **Run Cell 1.** Click on the first code cell and press `Shift + Enter`. A graphical form appears below the cell, with tick boxes, text fields and number fields. You might have to scroll down/up to see it. 
 3. **Fill in the form.** At a minimum, check or set:
    - **Input directory**: the folder containing your image file(s). Paste the plain folder path (copy it from the File Explorer address bar), without surrounding quotation marks.
    - **File name**: the exact name of your file including the extension, for example `sample_01.czi` (or tick **Process all files in directory** to analyse the whole folder).
