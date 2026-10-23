@@ -1,4 +1,4 @@
-# BeatRatePy - Automated Hight-Throughput Python-Based Beat Rate Quantification and Generation of Speed and Contraction Traces
+# BeatRatePy - Automated High-Throughput Python-Based Beat Rate Quantification and Generation of Speed and Contraction Traces
 
 ## Overview
 
